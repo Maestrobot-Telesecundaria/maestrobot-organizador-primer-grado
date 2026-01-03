@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Documentos</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    background-image:url("../fondos/fondodocumentos.png");
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color:#f3eadf;
+}
+
+/* TÍTULO */
+.titulo{
+    text-align:center;
+    font-size:54px;
+    font-weight:bold;
+    margin-top:45px;
+    color:#2b2b2b;
+    letter-spacing:1px;
+}
+
+/* CONTENEDOR */
+.contenedor{
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+    gap:70px;
+    margin-top:70px;
+}
+
+/* TARJETAS (MISMO TAMAÑO) */
+.tarjeta{
+    width:380px;
+    min-height:420px;
+    background:rgba(255,255,255,0.92);
+    border-radius:26px;
+    padding:35px 30px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+/* ENCABEZADOS */
+.encabezado{
+    font-size:24px;
+    font-weight:bold;
+    padding:14px 22px;
+    border-radius:26px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.asistencia{
+    background:#f5b81b;
+    color:#000;
+}
+
+.telesec{
+    background:#4a8fe7;
+    color:white;
+}
+
+/* TEXTO */
+.descripcion{
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:25px;
+    color:#444;
+}
+
+/* ITEM DOCUMENTO */
+.item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.item img{
+    width:65px;
+}
+
+.item span{
+    font-size:16px;
+    font-weight:600;
+}
+
+/* BOTÓN POSIBILIDADES */
+.boton{
+    margin:0 auto;
+    width:85%;
+    padding:14px;
+    font-size:19px;
+    font-weight:bold;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#1f4e79,#163a5c);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
+
+.boton:hover{
+    transform:scale(1.03);
+}
+
+/* REGRESAR (DISEÑO NUEVO) */
+.regresar{
+    position:fixed;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:14px 60px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#7b9cc9,#567fb8);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    letter-spacing:1px;
+}
+
+.regresar:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="titulo">Documentos</div>
+
+<div class="contenedor">
+
+    <!-- LISTA DE ASISTENCIA -->
+    <div class="tarjeta">
+        <div>
+            <div class="encabezado asistencia">Lista de asistencia</div>
+
+            <div class="descripcion">
+                Aquí podrás encontrar el documento propuesta de control de asistencia.
+            </div>
+        </div>
+
+        <div class="item" onclick="abrirDocumento('lista.docx')">
+            <img src="../fondos/word.jpg">
+            <span>Lista de Asistencia</span>
+        </div>
+    </div>
+
+    <!-- TELESECUNDARIA -->
+    <div class="tarjeta">
+        <div>
+            <div class="encabezado telesec">Documentos de Telesecundaria</div>
+
+            <div class="descripcion">
+                Documentos normativos y de planeación para telesecundaria.
+            </div>
+        </div>
+
+        <div class="item" onclick="abrirDocumento('dosificaciones.pdf')">
+            <img src="../fondos/pdf.jpg">
+            <span>Dosificaciones</span>
+        </div>
+
+        <button class="boton" onclick="abrirDocumento('posibilidades.pdf')">
+            Posibilidades
+        </button>
+    </div>
+
+</div>
+
+<button class="regresar" onclick="regresar()">REGRESAR</button>
+
+<script>
+function abrirDocumento(archivo){
+    if (window.Documentos && window.Documentos.abrir) {
+        window.Documentos.abrir(archivo);
+    }
+}
+
+function regresar(){
+    window.location.href = "menu.html";
+}
+</script>
+
+</body>
+</html>

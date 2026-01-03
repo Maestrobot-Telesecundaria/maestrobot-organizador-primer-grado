@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Organizador de Primer Grado</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Georgia", serif;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-image: url("data/fondos/fondoportada.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contenedor {
+      /* SIN FONDO */
+    }
+
+    .titulo {
+      font-size: 52px;
+      font-weight: bold;
+      color: #000;
+      text-shadow: 2px 2px 6px rgba(255,255,255,0.7);
+      margin-bottom: 15px;
+    }
+
+    .subtitulo {
+      font-size: 20px;
+      color: #222;
+      text-shadow: 1px 1px 4px rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+
+    .btn-iniciar {
+      background-color: #5a9bd5;
+      color: white;
+      font-size: 22px;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .btn-iniciar:hover {
+      background-color: #417cb8;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+    <div class="titulo">ORGANIZADOR DE<br>PRIMER GRADO</div>
+    <div class="subtitulo">by Maestro Bot</div>
+
+    <button class="btn-iniciar" onclick="irAlMenu()">
+      INICIAR →
+    </button>
+  </div>
+
+  <script>
+    function irAlMenu() {
+      window.location.href = "data/htmls/menu.html";
+    }
+  </script>
+
+</body>
+</html>

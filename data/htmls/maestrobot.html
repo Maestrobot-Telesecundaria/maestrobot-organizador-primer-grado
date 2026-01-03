@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>MaestroBot</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f1f5f9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: #1e293b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* CHAT */
+#chat {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #e5e7eb;
+}
+
+/* MENSAJES */
+.mensaje {
+  margin-bottom: 10px;
+  max-width: 85%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.docente {
+  background: #2563eb;
+  color: white;
+  margin-left: auto;
+}
+
+.bot {
+  background: white;
+  border: 1px solid #cbd5e1;
+}
+
+/* INPUT */
+#entrada {
+  display: flex;
+  border-top: 1px solid #cbd5e1;
+}
+
+#texto {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  🤖 MaestroBot · Secundaria
+</header>
+
+<div id="chat"></div>
+
+<div id="entrada">
+  <input id="texto" placeholder="Escribe tu consulta docente..." />
+  <button onclick="enviar()">Enviar</button>
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const input = document.getElementById("texto");
+
+function agregarMensaje(texto, clase) {
+  const div = document.createElement("div");
+  div.className = `mensaje ${clase}`;
+  div.innerText = texto;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+async function enviar() {
+  const texto = input.value.trim();
+  if (!texto) return;
+
+  agregarMensaje(texto, "docente");
+  input.value = "";
+
+  const esperando = document.createElement("div");
+  esperando.className = "mensaje bot";
+  esperando.innerText = "MaestroBot está escribiendo...";
+  chat.appendChild(esperando);
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const respuesta = await window.MaestroBot.responder(texto);
+    esperando.innerText = respuesta;
+  } catch (e) {
+    esperando.innerText = "Error al conectar con MaestroBot.";
+  }
+}
+
+// Enviar con Enter
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") enviar();
+});
+</script>
+
+</body>
+</html>

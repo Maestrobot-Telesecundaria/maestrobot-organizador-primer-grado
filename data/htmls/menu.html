@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contenido</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Georgia", serif;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden; /* SIN SCROLL */
+    background:url("../fondos/menu-fondo.png") no-repeat center center fixed;
+    background-size:cover;
+    color:#000;
+    user-select:none;
+}
+
+/* TÍTULO */
+.titulo-menu{
+    width:100%;
+    text-align:center;
+    font-size:44px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-top:18px;
+}
+
+/* CONTENEDOR MENÚ */
+.menu{
+    height:calc(100vh - 80px);
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px 60px;
+    padding:25px 80px;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* BOTONES */
+.menu a{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    text-decoration:none;
+    color:#000;
+}
+
+.menu a:visited,
+.menu a:hover,
+.menu a:active{
+    color:#000;
+}
+
+/* ICONOS */
+.menu img{
+    width:56px;
+    height:auto;
+    cursor:pointer;
+}
+
+/* TEXTO */
+.menu span{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.1;
+    cursor:pointer;
+}
+
+/* HOVER SUAVE */
+.menu a:hover img{
+    transform:scale(1.03);
+    transition:0.15s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="titulo-menu">CONTENIDO</div>
+
+<div class="menu">
+
+<a href="proyectos.html"><img src="../fondos/proyectos.png"><span>PROYECTOS</span></a>
+<a href="lenguajes.html"><img src="../fondos/Lenguajes.png"><span>LENGUAJES</span></a>
+<a href="humano-comunitario.html"><img src="../fondos/humano-comunitario.png"><span>DE LO HUMANO<br>A LO COMUNITARIO</span></a>
+
+<a href="documentos.html"><img src="../fondos/documentos.png"><span>DOCUMENTOS</span></a>
+<a href="saberes.html"><img src="../fondos/saberes.png"><span>SABERES</span></a>
+<a href="libros.html"><img src="../fondos/libros.png"><span>LIBROS DE CONSULTA</span></a>
+
+<a href="mediateca.html"><img src="../fondos/mediateca.png"><span>MEDIATECA</span></a>
+<a href="etica.html"><img src="../fondos/etica.png"><span>ÉTICA</span></a>
+<a href="supervision.html"><img src="../fondos/supervision.png"><span>SUPERVISIÓN</span></a>
+
+<a href="ia.html"><img src="../fondos/ia.png"><span>INTELIGENCIA<br>ARTIFICIAL</span></a>
+<a href="plan-analitico.html"><img src="../fondos/plan-analitico.png"><span>PLAN ANALÍTICO</span></a>
+<a href="programas.html"><img src="../fondos/programas.png"><span>PROGRAMAS</span></a>
+
+<a href="biblioteca.html"><img src="../fondos/biblioteca.png"><span>BIBLIOTECA</span></a>
+<a href="contacto.html"><img src="../fondos/contacto.png"><span>CONTACTO</span></a>
+<a href="cursos.html"><img src="../fondos/cursos.png"><span>CURSOS</span></a>
+
+<a href="comunidades.html"><img src="../fondos/comunidades.png"><span>COMUNIDADES DE<br>APRENDIZAJE</span></a>
+<a href="emergencias.html"><img src="../fondos/emergencias.png"><span>EMERGENCIAS</span></a>
+<a href="actualizaciones.html"><img src="../fondos/actualizaciones.png"><span>ACTUALIZACIONES</span></a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+"build": {
+  "appId": "com.maestrobot.app",
+  "productName": "MaestroBot",
+  "files": [
+    "**/*"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "data/icon/icon.ico"
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "TU_USUARIO_GITHUB",
+      "repo": "TU_REPOSITORIO"
+    }
+  ]
+}

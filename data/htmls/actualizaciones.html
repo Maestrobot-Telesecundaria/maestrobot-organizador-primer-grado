@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Actualizaciones del Proyecto</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    background-image:url("../fondos/fondoactualizaciones.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor{
+    width:90%;
+    max-width:1000px;
+    height:80%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px;
+}
+
+/* TEXTO */
+.texto{
+    width:55%;
+    color:#6b3e2e;
+}
+
+.texto h1{
+    font-size:48px;
+    margin-bottom:25px;
+    font-weight:500;
+}
+
+.texto p{
+    font-size:20px;
+    line-height:1.6;
+}
+
+/* BOTÓN ACTUALIZAR */
+.boton-area{
+    width:40%;
+    display:flex;
+    justify-content:center;
+}
+
+.boton-actualizar{
+    padding:14px 38px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:#ffffff;
+    color:#6b3e2e;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 6px 15px rgba(0,0,0,.2);
+    transition:all .3s ease;
+}
+
+.boton-actualizar:hover{
+    background:#f3f3f3;
+    transform:scale(1.05);
+}
+
+/* BOTÓN REGRESAR */
+.boton-regresar{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    padding:12px 20px;
+    font-size:15px;
+    font-weight:bold;
+    border:none;
+    border-radius:10px;
+    background:#355e3b;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    z-index:1000;
+}
+
+.boton-regresar:hover{
+    background:#2a4a2f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <div class="texto">
+        <h1>¡Actualizate!</h1>
+        <p>
+            Cada que halla una actualización puedes descargarla
+            en el siguiente botón
+        </p>
+    </div>
+
+    <div class="boton-area">
+        <button class="boton-actualizar" id="btnActualizar">
+            ACTUALIZAR
+        </button>
+    </div>
+
+</div>
+
+<!-- BOTÓN REGRESAR -->
+<button class="boton-regresar" onclick="regresarMenu()">
+    REGRESAR
+</button>
+
+<script>
+document.getElementById("btnActualizar").addEventListener("click", () => {
+    alert("Buscando actualizaciones...");
+});
+
+function regresarMenu(){
+    window.location.href = "../htmls/menu.html";
+}
+</script>
+
+</body>
+</html>

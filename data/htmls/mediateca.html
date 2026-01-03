@@ -1,0 +1,274 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mediateca</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    padding:20px;
+    background:#f2f2f2;
+}
+
+/* BARRA SUPERIOR */
+.barra-superior{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+#buscador{
+    width:70%;
+    padding:12px;
+    font-size:16px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.boton-regresar{
+    padding:12px 18px;
+    background:#355e3b;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.boton-regresar:hover{
+    background:#2a4a2f;
+}
+
+/* CONTENEDOR GENERAL */
+.contenedor{
+    display:flex;
+    gap:20px;
+}
+
+/* PANTALLA DE VIDEO */
+.video-panel{
+    width:40%;
+    background:#4a74c9;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:8px;
+    min-height:500px;
+}
+
+/* PANEL DERECHO */
+.proyectos{
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* TARJETA */
+.tarjeta{
+    border:2px solid #7bc17b;
+    border-radius:6px;
+    padding:15px;
+    display:flex;
+    gap:15px;
+    background:white;
+}
+
+/* BOTÓN PROYECTO PARCIAL */
+.boton-parcial{
+    width:160px;
+    height:120px;
+    background:#4a74c9;
+    color:white;
+    border:none;
+    font-size:14px;
+    font-weight:bold;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.boton-parcial:hover{
+    background:#365aa3;
+}
+
+/* INFO */
+.info{
+    flex:1;
+}
+
+.info h3{
+    margin:0;
+    font-size:18px;
+}
+
+.info p{
+    margin:4px 0;
+    font-size:14px;
+}
+
+/* BOTONES ACADÉMICOS */
+.botones{
+    display:flex;
+    gap:12px;
+    margin-top:10px;
+}
+
+.botones button{
+    background:#4a74c9;
+    color:white;
+    border:none;
+    padding:10px;
+    font-size:12px;
+    border-radius:4px;
+    cursor:pointer;
+    width:140px;
+}
+
+.botones button:hover{
+    background:#365aa3;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BARRA SUPERIOR -->
+<div class="barra-superior">
+    <input type="text" id="buscador" placeholder="Buscar por proyecto, campo formativo o nombre...">
+    <button class="boton-regresar" onclick="window.location.href='menu.html'">Regresar</button>
+</div>
+
+<div class="contenedor">
+
+    <!-- VIDEO -->
+    <div class="video-panel" id="videoPanel">
+        Pantalla para videos
+    </div>
+
+    <!-- PROYECTOS -->
+    <div class="proyectos" id="listaProyectos">
+
+        <!-- PROYECTO 1 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 1</button>
+            <div class="info">
+                <h3>¡Así lo siento, así te lo comparto!</h3>
+                <p>Campo Formativo: Lenguajes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('1')">Encuentro breve de lecturas comentadas</button>
+                    <button onclick="cargarVideo('2')">Tarjetas multiculturales</button>
+                    <button onclick="cargarVideo('3')">Tertulia artística</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 2 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 2</button>
+            <div class="info">
+                <h3>¡Un buen inicio!</h3>
+                <p>Campo Formativo: Saberes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('4')">Carteles gráficos</button>
+                    <button onclick="cargarVideo('5')">Infografía combinada</button>
+                    <button onclick="cargarVideo('6')">Infografía con dimensiones</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 3 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 3</button>
+            <div class="info">
+                <h3>¡Me identifico, pertenezco!</h3>
+                <p>Campo Formativo: Lenguajes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('7')">Entrevista personal</button>
+                    <button onclick="cargarVideo('8')">Objeto artesanal</button>
+                    <button onclick="cargarVideo('9')">Cuadro comparativo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 4 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 4</button>
+            <div class="info">
+                <h3>Nuestro patrimonio lingüístico</h3>
+                <p>Campo Formativo: Lenguajes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('10')">Glosario del pasado</button>
+                    <button onclick="cargarVideo('11')">Catálogo lingüístico local</button>
+                    <button onclick="cargarVideo('12')">Tarjetas reveladoras</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 5 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 5</button>
+            <div class="info">
+                <h3>Juntos a resolver el problema</h3>
+                <p>Campo Formativo: Lenguajes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('13')">Historia con imágenes</button>
+                    <button onclick="cargarVideo('14')">Asamblea reveladora</button>
+                    <button onclick="cargarVideo('15')">Texto breve</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 6 -->
+        <div class="tarjeta">
+            <button class="boton-parcial">Proyecto Parcial de Aula 6</button>
+            <div class="info">
+                <h3>Expresar es… ¡Todo un arte!</h3>
+                <p>Campo Formativo: Lenguajes</p>
+                <div class="botones">
+                    <button onclick="cargarVideo('16')">Glosario bilingüe</button>
+                    <button onclick="cargarVideo('17')">Cuadro comparativo</button>
+                    <button onclick="cargarVideo('18')">Tertulia artística</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("buscador").addEventListener("keyup", function() {
+    let texto = this.value.toLowerCase();
+    let tarjetas = document.querySelectorAll(".tarjeta");
+
+    tarjetas.forEach(tarjeta => {
+        let contenido = tarjeta.innerText.toLowerCase();
+        tarjeta.style.display = contenido.includes(texto) ? "flex" : "none";
+    });
+});
+
+function cargarVideo(id){
+    const panel = document.getElementById("videoPanel");
+    panel.innerHTML = `
+        <div style="text-align:center;">
+            <h2>Contenido cargado</h2>
+            <p>Proyecto académico ID: ${id}</p>
+            <p>(Video pendiente por asignar)</p>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>

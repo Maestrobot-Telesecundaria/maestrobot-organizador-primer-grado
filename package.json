@@ -1,0 +1,49 @@
+{
+  "name": "mi-app-electron",
+  "version": "1.0.0",
+  "author": "Maestro Gerardo Paul Herrera Mar",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-reload": "^1.5.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.8"
+  },
+  "build": {
+    "appId": "com.maestrobot.app",
+    "productName": "MaestroBot",
+    "artifactName": "Organizador de Primer Grado by MaestroBot.${ext}",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "data/icon/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "data/icon/icon.ico",
+      "uninstallerIcon": "data/icon/icon.ico",
+      "installerHeaderIcon": "data/icon/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MaestroBot"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "TU_USUARIO_GITHUB",
+        "repo": "TU_REPOSITORIO"
+      }
+    ]
+  }
+}
