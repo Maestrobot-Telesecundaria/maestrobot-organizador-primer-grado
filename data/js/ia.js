@@ -1,71 +1,140 @@
-const fetch = global.fetch || require("node-fetch");
+const { spawn } = require("child_process");
+const path = require("path");
+const fs = require("fs");
 
-const SYSTEM_PROMPT = ` 
+/* ================================
+   📁 RUTAS OLLAMA EMPAQUETADO
+================================ */
+const BASE = path.join(__dirname, "..", "..");
+const OLLAMA_BASE = path.join(BASE, "engine", "ollama");
+const OLLAMA_EXE = path.join(OLLAMA_BASE, "ollama.exe");
+const OLLAMA_HOME = path.join(OLLAMA_BASE, ".ollama");
+const OLLAMA_MODELS = path.join(OLLAMA_HOME, "models");
+
+/* ================================
+   ⚙️ MODELO
+================================ */
+const MODELO = "gemma3:1b";
+
+/* ================================
+   🧠 PROMPT DEL SISTEMA
+================================ */
+const SYSTEM_PROMPT = `
 Eres MaestroBot, un asistente pedagógico para docentes de primer grado de secundaria en México.
 
 Fuiste creado por el profesor Gerardo Paul Herrera.
-Si te preguntan quién eres o quién te creó, debes decirlo claramente.
 
 Tu función es:
 - Apoyar en planeación didáctica
-- Sugerir actividades y estrategias
-- Ayudar en evaluación formativa
-- Explicar conceptos de manera clara
+- Sugerir actividades
+- Ayudar en evaluación
+- Explicar conceptos de forma clara
 
-Estilo de respuesta:
-- Responde de forma directa, sin explicaciones innecesarias.
-- Si la pregunta es corta o factual (fechas, definiciones breves, datos rápidos), responde solo con la información solicitada.
-- Si la pregunta es específica o requiere desarrollo, responde de forma completa y estructurada.
-- No des rodeos ni relleno.
-
-Usa lenguaje profesional y pedagógico.
 Responde siempre en español.
+De forma directa, sin relleno.
 `;
 
+/* ================================
+   🧠 MEMORIA
+================================ */
 let memoria = [];
-const LIMITE_MEMORIA = 6;
+const LIMITE_MEMORIA = 4;
 
-async function responder(mensaje) {
-  try {
-    memoria.push(`Docente: ${mensaje}`);
-    if (memoria.length > LIMITE_MEMORIA * 2) {
-      memoria = memoria.slice(-LIMITE_MEMORIA * 2);
+/* ================================
+   🧹 LIMPIEZA
+================================ */
+function limpiar(texto) {
+  if (!texto) return "";
+  return texto
+    .replace(/\r/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+/* ================================
+   🚀 FUNCIÓN PRINCIPAL
+================================ */
+function responder(mensaje) {
+  return new Promise((resolve) => {
+    try {
+      if (!fs.existsSync(OLLAMA_EXE)) {
+        console.error("❌ No existe ollama.exe en:", OLLAMA_EXE);
+        return resolve("❌ No se encontró el motor de IA.");
+      }
+
+      // Guardar memoria
+      memoria.push(`Docente: ${mensaje}`);
+      if (memoria.length > LIMITE_MEMORIA * 2) {
+        memoria = memoria.slice(-LIMITE_MEMORIA * 2);
+      }
+
+      // Construir prompt
+      let prompt = SYSTEM_PROMPT + "\n\n";
+      for (let m of memoria) {
+        prompt += m + "\n";
+      }
+      prompt += "MaestroBot:";
+
+      console.log("🧠 Enviando a Ollama...");
+
+      const proceso = spawn(
+        OLLAMA_EXE,
+        ["run", MODELO],
+        {
+          cwd: OLLAMA_BASE,
+          windowsHide: true,
+          env: {
+            ...process.env,
+            OLLAMA_HOME: OLLAMA_HOME,
+            OLLAMA_MODELS: OLLAMA_MODELS,
+            OLLAMA_OFFLINE: "1"
+          }
+        }
+      );
+
+      let salida = "";
+      let error = "";
+
+      proceso.stdout.on("data", (d) => {
+        salida += d.toString("utf8");
+      });
+
+      proceso.stderr.on("data", (d) => {
+        error += d.toString("utf8");
+      });
+
+      proceso.on("error", (err) => {
+        console.error("❌ Error ejecutando Ollama:", err);
+        return resolve("❌ Error ejecutando el motor de IA.");
+      });
+
+      // Enviar prompt
+      proceso.stdin.write(prompt + "\n");
+      proceso.stdin.end();
+
+      proceso.on("close", () => {
+        if (error && error.trim()) {
+          console.log("🦙 Ollama STDERR:", error);
+        }
+
+        let respuesta = limpiar(salida);
+
+        // Ollama a veces devuelve el prompt incluido → limpiamos
+        respuesta = respuesta.replace(prompt, "").trim();
+
+        if (!respuesta) {
+          return resolve("⚠️ El modelo no devolvió respuesta.");
+        }
+
+        memoria.push(`MaestroBot: ${respuesta}`);
+        resolve(respuesta);
+      });
+
+    } catch (err) {
+      console.error("❌ ERROR GENERAL IA:", err);
+      resolve("❌ Error interno del sistema de IA.");
     }
-
-    const messages = [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...memoria.map(m =>
-        m.startsWith("Docente:")
-          ? { role: "user", content: m.replace("Docente: ", "") }
-          : { role: "assistant", content: m.replace("MaestroBot: ", "") }
-      ),
-      { role: "assistant", content: "MaestroBot:" }
-    ];
-
-    const response = await fetch("http://127.0.0.1:11434/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "gemma3:4b",
-        messages,
-        stream: false
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data = await response.json();
-    const respuesta = data.message.content.trim();
-
-    memoria.push(`MaestroBot: ${respuesta}`);
-    return respuesta;
-
-  } catch (error) {
-    console.error("ERROR IA LOCAL:", error);
-    return "⚠️ MaestroBot no pudo conectarse al modelo local.";
-  }
+  });
 }
 
 module.exports = { responder };

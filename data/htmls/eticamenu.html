@@ -1,0 +1,254 @@
+<!DOCTYPE html>    
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ética</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    padding:20px;
+    background-image: url("../fondos/menu-fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* TITULO */
+.titulo{
+    font-size:56px;
+    font-weight:bold;
+    margin-bottom:10px;
+    text-align:center;
+    color:#1f2f4d;
+}
+
+/* INTRO */
+.intro{
+    font-size:20px;
+    max-width:1100px;
+    margin:0 auto 30px auto;
+    background: rgba(255,255,255,0.85);
+    padding:15px 20px;
+    border-radius:10px;
+}
+
+/* BOTON REGRESAR */
+.boton-regresar{
+    position:fixed;
+    top:20px;
+    right:20px;
+    padding:12px 22px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#4a7db8;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+.boton-regresar:hover{
+    background:#3a699d;
+}
+
+/* TABLA */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#4f81bd;
+    color:white;
+    padding:15px;
+    font-size:26px;
+}
+
+td{
+    background:#dbe5f1;
+    padding:16px;
+    border:1px solid #4f81bd;
+}
+
+/* CONTENEDOR PROYECTO */
+.proyecto{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* INPUT NUMERO */
+.proyecto input{
+    width:60px;
+    padding:8px;
+    font-size:18px;
+    text-align:center;
+    border-radius:6px;
+    border:1px solid #999;
+}
+
+/* BOTON TEXTO */
+.proyecto button{
+    background:none;
+    border:none;
+    color:blue;
+    font-size:18px;
+    cursor:pointer;
+    text-decoration:underline;
+    text-align:left;
+}
+
+/* ===== POPUP ===== */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+.modal-contenido{
+    background:white;
+    width:560px;
+    max-width:95%;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.opciones button{
+    display:block;
+    width:100%;
+    margin:8px 0;
+    padding:11px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    background:#355e3b;
+    color:white;
+    cursor:pointer;
+}
+
+.opciones button:hover{
+    background:#2a4a2f;
+}
+
+.cerrar{
+    background:#b03a2e !important;
+}
+</style>
+</head>
+<body>
+
+<button class="boton-regresar" onclick="window.location.href='menu.html'">⬅ REGRESAR</button>
+
+<div class="titulo">Ética</div>
+
+<div class="intro">
+En los cuadros en blanco puedes escribir el número de orden en el que deseas trabajar cada proyecto.
+Para ver el contenido de un proyecto y desplegar su menú de opciones, haz clic en su nombre.
+</div>
+
+<table>
+<tr>
+    <th>1er Trimestre</th>
+    <th>2do Trimestre</th>
+    <th>3er Trimestre</th>
+</tr>
+
+<tr>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(1,'Un mapa de nuestro mundo')">1.- Un mapa de nuestro mundo</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(5,'Acciones para el cambio de nuestro entorno ambiental y social')">5.- Acciones para el cambio de nuestro entorno ambiental y social</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(9,'Con el intercambio de las ideas, conocemos más')">9.- Con el intercambio de las ideas, conocemos más</button></div></td>
+</tr>
+
+<tr>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(2,'Los desastres no son naturales, pueden prevenirse')">2.- Los desastres no son naturales, pueden prevenirse</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(6,'¿Quiénes somos, de dónde venimos y hacia dónde vamos?')">6.- ¿Quiénes somos, de dónde venimos y hacia dónde vamos?</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(10,'Hagamos nuestra convención')">10.- Hagamos nuestra convención</button></div></td>
+</tr>
+
+<tr>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(3,'La dinámica de la población y la diversidad cultural')">3.- La dinámica de la población y la diversidad cultural</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(7,'Nuestras raíces')">7.- Nuestras raíces</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(11,'Por mí, por ti, por todas las personas')">11.- Por mí, por ti, por todas las personas</button></div></td>
+</tr>
+
+<tr>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(4,'Un futuro sostenible')">4.- Un futuro sostenible</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(8,'A la tierra que fueres, haz lo que vieres')">8.- A la tierra que fueres, haz lo que vieres</button></div></td>
+<td><div class="proyecto"><input type="number"><button onclick="abrirProyecto(12,'Participamos en comunidad y las cosas cambian')">12.- Participamos en comunidad y las cosas cambian</button></div></td>
+</tr>
+</table>
+
+<!-- ===== POPUP ===== -->
+<div class="modal" id="modal">
+    <div class="modal-contenido">
+        <h2 id="tituloProyecto">Proyecto</h2>
+        <div class="opciones" id="opcionesProyecto"></div>
+        <button class="cerrar" onclick="cerrarModal()">❌ Cerrar</button>
+    </div>
+</div>
+
+<script>
+function abrirProyecto(numero, nombre){
+    document.getElementById("tituloProyecto").innerText = "Proyecto " + numero + ": " + nombre;
+
+    const base = (numero - 1) * 3 + 1;
+
+    const cont = document.getElementById("opcionesProyecto");
+    cont.innerHTML = `
+        <button onclick="abrirPlaneacion(${numero})">📄 Planeación</button>
+        <button onclick="proximamente()">📘 Cuadernillo de actividades (Próximamente)</button>
+
+        <button onclick="abrirAcademico(${numero}, ${base})">🧩 Proyecto Académico ${base}</button>
+        <button onclick="abrirAcademico(${numero}, ${base+1})">🧩 Proyecto Académico ${base+1}</button>
+        <button onclick="abrirAcademico(${numero}, ${base+2})">🧩 Proyecto Académico ${base+2}</button>
+
+        <button onclick="abrirInstrumento(${base})">📝 Instrumento de Evaluación PA ${base}</button>
+        <button onclick="abrirInstrumento(${base+1})">📝 Instrumento de Evaluación PA ${base+1}</button>
+        <button onclick="abrirInstrumento(${base+2})">📝 Instrumento de Evaluación PA ${base+2}</button>
+    `;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+function proximamente(){
+    alert("Este contenido estará disponible próximamente.");
+}
+
+function abrirPlaneacion(num){
+    const ruta = "data/Documentosproyecto/PlaneacionesEtica/PLAE" + num + ".docx";
+    window.location.href = ruta;
+}
+
+function abrirAcademico(proyecto, pa){
+    const ruta = "data/Documentosproyecto/GuionesEtica/EPPA" + proyecto + "PA" + pa + ".docx";
+    window.location.href = ruta;
+}
+
+function abrirInstrumento(pa){
+    const ruta = "data/Documentosproyecto/InstrumentosEtica/INSEPA" + pa + ".docx";
+    window.location.href = ruta;
+}
+</script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>     
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -40,7 +40,7 @@ body{
     margin-top:70px;
 }
 
-/* TARJETAS (MISMO TAMAÑO) */
+/* TARJETAS */
 .tarjeta{
     width:380px;
     min-height:420px;
@@ -83,30 +83,12 @@ body{
     color:#444;
 }
 
-/* ITEM DOCUMENTO */
-.item{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-    cursor:pointer;
-}
-
-.item img{
-    width:65px;
-}
-
-.item span{
-    font-size:16px;
-    font-weight:600;
-}
-
-/* BOTÓN POSIBILIDADES */
+/* BOTONES DOCUMENTO */
 .boton{
-    margin:0 auto;
+    margin:8px auto;
     width:85%;
-    padding:14px;
-    font-size:19px;
+    padding:12px;
+    font-size:16px;
     font-weight:bold;
     border:none;
     border-radius:18px;
@@ -114,20 +96,33 @@ body{
     color:white;
     cursor:pointer;
     box-shadow:0 5px 15px rgba(0,0,0,0.25);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+.boton img{
+    width:28px;
 }
 
 .boton:hover{
     transform:scale(1.03);
 }
 
-/* REGRESAR (DISEÑO NUEVO) */
+/* SUBIR BOTÓN DE ASISTENCIA */
+.subir-boton{
+    margin-bottom:60px;
+}
+
+/* REGRESAR */
 .regresar{
     position:fixed;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    padding:14px 60px;
-    font-size:20px;
+    top:25px;
+    left:25px;
+    padding:12px 40px;
+    font-size:18px;
     font-weight:bold;
     border:none;
     border-radius:30px;
@@ -136,15 +131,18 @@ body{
     cursor:pointer;
     box-shadow:0 8px 20px rgba(0,0,0,0.3);
     letter-spacing:1px;
+    z-index:1000;
 }
 
 .regresar:hover{
-    transform:translateX(-50%) scale(1.05);
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
+
+<button class="regresar" onclick="regresar()">REGRESAR</button>
 
 <div class="titulo">Documentos</div>
 
@@ -154,47 +152,76 @@ body{
     <div class="tarjeta">
         <div>
             <div class="encabezado asistencia">Lista de asistencia</div>
-
             <div class="descripcion">
                 Aquí podrás encontrar el documento propuesta de control de asistencia.
             </div>
         </div>
 
-        <div class="item" onclick="abrirDocumento('lista.docx')">
-            <img src="../fondos/word.jpg">
-            <span>Lista de Asistencia</span>
+        <div class="subir-boton">
+            <button class="boton" onclick="abrirDocumento('../documentos/lista.docx')">
+                <img src="../fondos/word.jpg">
+                Lista de Asistencia
+            </button>
         </div>
     </div>
 
-    <!-- TELESECUNDARIA -->
+    <!-- DOCUMENTOS DE POSIBILIDADES -->
     <div class="tarjeta">
         <div>
-            <div class="encabezado telesec">Documentos de Telesecundaria</div>
-
+            <div class="encabezado telesec">Documentos de Posibilidades</div>
             <div class="descripcion">
-                Documentos normativos y de planeación para telesecundaria.
+                Documentos correspondientes al campo de posibilidades.
             </div>
         </div>
 
-        <div class="item" onclick="abrirDocumento('dosificaciones.pdf')">
-            <img src="../fondos/pdf.jpg">
-            <span>Dosificaciones</span>
+        <button class="boton" onclick="abrirDocumento('../documentos/POS_LEN_1.pdf')">
+            <img src="../fondos/pdf.jpg"> Lenguajes
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/POS_SyPC_1.pdf')">
+            <img src="../fondos/pdf.jpg"> Saberes
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/POS_ENS_1.pdf')">
+            <img src="../fondos/pdf.jpg"> Ética
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/POS_DHC_1.pdf')">
+            <img src="../fondos/pdf.jpg"> De lo humano
+        </button>
+    </div>
+
+    <!-- DOSIFICACIONES -->
+    <div class="tarjeta">
+        <div>
+            <div class="encabezado telesec">Dosificaciones de contenido</div>
+            <div class="descripcion">
+                Dosificaciones por campo formativo.
+            </div>
         </div>
 
-        <button class="boton" onclick="abrirDocumento('posibilidades.pdf')">
-            Posibilidades
+        <button class="boton" onclick="abrirDocumento('../documentos/L_G1_T123.pdf')">
+            <img src="../fondos/pdf.jpg"> Lenguajes
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/SPC_G1_T123.pdf')">
+            <img src="../fondos/pdf.jpg"> Saberes
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/ENS_G1_T123.pdf')">
+            <img src="../fondos/pdf.jpg"> Ética
+        </button>
+
+        <button class="boton" onclick="abrirDocumento('../documentos/DHC_G1_T123.pdf')">
+            <img src="../fondos/pdf.jpg"> De lo humano
         </button>
     </div>
 
 </div>
 
-<button class="regresar" onclick="regresar()">REGRESAR</button>
-
 <script>
-function abrirDocumento(archivo){
-    if (window.Documentos && window.Documentos.abrir) {
-        window.Documentos.abrir(archivo);
-    }
+function abrirDocumento(ruta){
+    window.open(ruta, "_blank");
 }
 
 function regresar(){

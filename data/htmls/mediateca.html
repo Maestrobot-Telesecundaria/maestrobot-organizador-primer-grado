@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -47,227 +47,123 @@ body{
     background:#2a4a2f;
 }
 
-/* CONTENEDOR GENERAL */
+/* CONTENEDOR */
 .contenedor{
     display:flex;
     gap:20px;
 }
 
-/* PANTALLA DE VIDEO */
+/* PANEL VIDEO */
 .video-panel{
-    width:40%;
-    background:#4a74c9;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-    font-weight:bold;
-    border-radius:8px;
+    width:50%;
     min-height:500px;
+    background:#000;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:20px;
 }
 
-/* PANEL DERECHO */
-.proyectos{
-    width:60%;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-/* TARJETA */
-.tarjeta{
-    border:2px solid #7bc17b;
-    border-radius:6px;
-    padding:15px;
-    display:flex;
-    gap:15px;
+/* LISTA */
+.lista{
+    width:50%;
     background:white;
-}
-
-/* BOTÓN PROYECTO PARCIAL */
-.boton-parcial{
-    width:160px;
-    height:120px;
-    background:#4a74c9;
-    color:white;
-    border:none;
-    font-size:14px;
-    font-weight:bold;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.boton-parcial:hover{
-    background:#365aa3;
-}
-
-/* INFO */
-.info{
-    flex:1;
-}
-
-.info h3{
-    margin:0;
-    font-size:18px;
-}
-
-.info p{
-    margin:4px 0;
-    font-size:14px;
-}
-
-/* BOTONES ACADÉMICOS */
-.botones{
-    display:flex;
-    gap:12px;
-    margin-top:10px;
-}
-
-.botones button{
-    background:#4a74c9;
-    color:white;
-    border:none;
+    border-radius:8px;
     padding:10px;
-    font-size:12px;
-    border-radius:4px;
-    cursor:pointer;
-    width:140px;
+    overflow:auto;
+    max-height:500px;
 }
 
-.botones button:hover{
-    background:#365aa3;
+.item-video{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    cursor:pointer;
+}
+
+.item-video:hover{
+    background:#eef3ff;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BARRA SUPERIOR -->
+<!-- BARRA -->
 <div class="barra-superior">
-    <input type="text" id="buscador" placeholder="Buscar por proyecto, campo formativo o nombre...">
+    <input type="text" id="buscador" placeholder="Buscar video...">
     <button class="boton-regresar" onclick="window.location.href='menu.html'">Regresar</button>
 </div>
 
+<!-- CONTENIDO -->
 <div class="contenedor">
 
     <!-- VIDEO -->
     <div class="video-panel" id="videoPanel">
-        Pantalla para videos
+        Selecciona un video
     </div>
 
-    <!-- PROYECTOS -->
-    <div class="proyectos" id="listaProyectos">
-
-        <!-- PROYECTO 1 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 1</button>
-            <div class="info">
-                <h3>¡Así lo siento, así te lo comparto!</h3>
-                <p>Campo Formativo: Lenguajes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('1')">Encuentro breve de lecturas comentadas</button>
-                    <button onclick="cargarVideo('2')">Tarjetas multiculturales</button>
-                    <button onclick="cargarVideo('3')">Tertulia artística</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROYECTO 2 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 2</button>
-            <div class="info">
-                <h3>¡Un buen inicio!</h3>
-                <p>Campo Formativo: Saberes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('4')">Carteles gráficos</button>
-                    <button onclick="cargarVideo('5')">Infografía combinada</button>
-                    <button onclick="cargarVideo('6')">Infografía con dimensiones</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROYECTO 3 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 3</button>
-            <div class="info">
-                <h3>¡Me identifico, pertenezco!</h3>
-                <p>Campo Formativo: Lenguajes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('7')">Entrevista personal</button>
-                    <button onclick="cargarVideo('8')">Objeto artesanal</button>
-                    <button onclick="cargarVideo('9')">Cuadro comparativo</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROYECTO 4 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 4</button>
-            <div class="info">
-                <h3>Nuestro patrimonio lingüístico</h3>
-                <p>Campo Formativo: Lenguajes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('10')">Glosario del pasado</button>
-                    <button onclick="cargarVideo('11')">Catálogo lingüístico local</button>
-                    <button onclick="cargarVideo('12')">Tarjetas reveladoras</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROYECTO 5 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 5</button>
-            <div class="info">
-                <h3>Juntos a resolver el problema</h3>
-                <p>Campo Formativo: Lenguajes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('13')">Historia con imágenes</button>
-                    <button onclick="cargarVideo('14')">Asamblea reveladora</button>
-                    <button onclick="cargarVideo('15')">Texto breve</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROYECTO 6 -->
-        <div class="tarjeta">
-            <button class="boton-parcial">Proyecto Parcial de Aula 6</button>
-            <div class="info">
-                <h3>Expresar es… ¡Todo un arte!</h3>
-                <p>Campo Formativo: Lenguajes</p>
-                <div class="botones">
-                    <button onclick="cargarVideo('16')">Glosario bilingüe</button>
-                    <button onclick="cargarVideo('17')">Cuadro comparativo</button>
-                    <button onclick="cargarVideo('18')">Tertulia artística</button>
-                </div>
-            </div>
-        </div>
-
+    <!-- LISTA -->
+    <div class="lista" id="listaVideos">
+        Cargando videos...
     </div>
 
 </div>
 
 <script>
-document.getElementById("buscador").addEventListener("keyup", function() {
-    let texto = this.value.toLowerCase();
-    let tarjetas = document.querySelectorAll(".tarjeta");
+// 📁 Carpeta raíz de videos (FUERA del proyecto)
+const CARPETA_VIDEOS = "C:/MaestroBot/videos/";
 
-    tarjetas.forEach(tarjeta => {
-        let contenido = tarjeta.innerText.toLowerCase();
-        tarjeta.style.display = contenido.includes(texto) ? "flex" : "none";
+// Lista completa
+let todosLosVideos = [];
+
+// Pedir lista al backend (por preload)
+async function cargarVideos(){
+    const archivos = await window.electronAPI.leerVideos(CARPETA_VIDEOS);
+    todosLosVideos = archivos;
+    mostrarLista(archivos);
+}
+
+function mostrarLista(lista){
+    const contenedor = document.getElementById("listaVideos");
+
+    if(lista.length === 0){
+        contenedor.innerHTML = "<p>No hay videos</p>";
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    lista.forEach(ruta => {
+        const nombre = ruta.split("/").pop();
+
+        const div = document.createElement("div");
+        div.className = "item-video";
+        div.textContent = "▶ " + nombre;
+
+        div.onclick = () => reproducir(ruta);
+
+        contenedor.appendChild(div);
     });
-});
+}
 
-function cargarVideo(id){
+function reproducir(ruta){
     const panel = document.getElementById("videoPanel");
     panel.innerHTML = `
-        <div style="text-align:center;">
-            <h2>Contenido cargado</h2>
-            <p>Proyecto académico ID: ${id}</p>
-            <p>(Video pendiente por asignar)</p>
-        </div>
+        <video src="${ruta}" controls autoplay style="width:100%; height:100%; border-radius:8px;"></video>
     `;
 }
+
+// Buscador
+document.getElementById("buscador").addEventListener("input", function(){
+    const texto = this.value.toLowerCase();
+    const filtrados = todosLosVideos.filter(r => r.toLowerCase().includes(texto));
+    mostrarLista(filtrados);
+});
+
+// Cargar al iniciar
+cargarVideos();
 </script>
 
 </body>

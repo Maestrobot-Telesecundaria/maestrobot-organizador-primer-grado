@@ -1,0 +1,170 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Libros de Consulta</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    background-image:url("../fondos/Librosconsulta.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    padding:40px;
+    overflow:auto;
+}
+
+/* BOTÓN REGRESAR */
+.boton-regresar{
+    position:fixed;
+    top:25px;
+    left:25px;
+    padding:10px 18px;
+    background:#355e3b;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    z-index:1000;
+}
+.boton-regresar:hover{
+    background:#2a4a2f;
+}
+
+/* CONTENEDOR TÍTULO */
+.contenedor-titulo{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+/* TÍTULO */
+.titulo{
+    font-size:48px;
+    font-weight:bold;
+    color:#2b2b2b;
+    text-shadow:2px 2px 6px rgba(0,0,0,.25);
+    background:rgba(255,255,255,0.85);
+    display:inline-block;
+    padding:12px 30px;
+    border-radius:14px;
+}
+
+/* CONTENEDOR */
+.contenedor-libros{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:40px;
+    max-width:1300px;
+    margin:auto;
+}
+
+/* TARJETA */
+.libro{
+    text-align:center;
+    cursor:pointer;
+    transition:transform .3s;
+}
+
+.libro:hover{
+    transform:translateY(-8px);
+}
+
+/* MINIATURA */
+.libro img{
+    width:180px;
+    height:240px;
+    object-fit:cover;
+    border-radius:14px;
+    box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+
+/* TEXTO */
+.libro span{
+    display:inline-block;
+    margin-top:12px;
+    font-size:15px;
+    font-weight:600;
+    color:#2b2b2b;
+    background:rgba(255,255,255,0.9);
+    padding:6px 12px;
+    border-radius:10px;
+}
+
+/* POSICIÓN FILA INFERIOR */
+.col-2{ grid-column:2; }
+.col-3{ grid-column:3; }
+.col-4{ grid-column:4; }
+</style>
+</head>
+
+<body>
+
+<button class="boton-regresar" onclick="window.location.href='menu.html'">Regresar</button>
+
+<div class="contenedor-titulo">
+    <div class="titulo">Libros de Consulta</div>
+</div>
+
+<div class="contenedor-libros">
+
+    <div class="libro" onclick="abrirPDF('1_3_TS-Docente-F6-BAJA.pdf')">
+        <img src="../libros/miniaturas/Docentes.png">
+        <span>Libro sin recetas</span>
+    </div>
+
+    <div class="libro" onclick="abrirPDF('1_TS-LENGUAJES-BAJA.pdf')">
+        <img src="../libros/miniaturas/Lenguajes.png">
+        <span>Lenguajes</span>
+    </div>
+
+    <div class="libro" onclick="abrirPDF('1_TS-SPC-BAJA.pdf')">
+        <img src="../libros/miniaturas/Saberes.png">
+        <span>Saberes y Pensamiento Crítico</span>
+    </div>
+
+    <div class="libro" onclick="abrirPDF('1_TS-ENS-BAJA.pdf')">
+        <img src="../libros/miniaturas/Etica.png">
+        <span>Ética, Naturaleza y Sociedades</span>
+    </div>
+
+    <div class="libro" onclick="abrirPDF('1_TS-HC-BAJA.pdf')">
+        <img src="../libros/miniaturas/DHC.png">
+        <span>De lo humano a lo comunitario</span>
+    </div>
+
+    <div class="libro col-2" onclick="abrirPDF('1_TS-ML-BAJA.pdf')">
+        <img src="../libros/miniaturas/Multipleslenguajes.png">
+        <span>Múltiples Lenguajes</span>
+    </div>
+
+    <div class="libro col-3" onclick="abrirPDF('MULTI-TS-HIST-PUEBLO-MEX-BAJA.pdf')">
+        <img src="../libros/miniaturas/Historiamex.png">
+        <span>Historia del Pueblo Mexicano</span>
+    </div>
+
+    <div class="libro col-4" onclick="abrirPDF('1_TS-INGLES-BAJA.pdf')">
+        <img src="../libros/miniaturas/ingles.png">
+        <span>Inglés</span>
+    </div>
+
+</div>
+
+<script>
+function abrirPDF(archivo){
+    window.open("../libros/" + archivo, "_blank");
+}
+</script>
+
+</body>
+</html>

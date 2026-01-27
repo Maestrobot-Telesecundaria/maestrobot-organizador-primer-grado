@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
     body {
       width: 100vw;
       height: 100vh;
-      background-image: url("data/fondos/fondoportada.png");
+      background-image: url("./data/fondos/fondoportada.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -24,10 +24,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-    }
-
-    .contenedor {
-      /* SIN FONDO */
     }
 
     .titulo {
@@ -53,32 +49,29 @@
       border: none;
       border-radius: 40px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    }
-
-    .btn-iniciar:hover {
-      background-color: #417cb8;
-      transform: scale(1.05);
     }
   </style>
 </head>
 
 <body>
 
-  <div class="contenedor">
+  <div>
     <div class="titulo">ORGANIZADOR DE<br>PRIMER GRADO</div>
     <div class="subtitulo">by Maestro Bot</div>
 
-    <button class="btn-iniciar" onclick="irAlMenu()">
+    <button class="btn-iniciar" id="btnIniciar">
       INICIAR →
     </button>
   </div>
 
   <script>
-    function irAlMenu() {
-      window.location.href = "data/htmls/menu.html";
-    }
+    document.getElementById("btnIniciar").addEventListener("click", () => {
+      if (window.api && window.api.abrirMenu) {
+        window.api.abrirMenu();
+      } else {
+        alert("Error: API no disponible");
+      }
+    });
   </script>
 
 </body>

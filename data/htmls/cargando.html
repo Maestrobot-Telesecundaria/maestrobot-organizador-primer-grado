@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Preparando IA</title>
+<style>
+body{
+  margin:0;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #355e3b, #1f3f28);
+  color: white;
+  text-align: center;
+}
+.contenedor{
+  max-width: 420px;
+  width: 90%;
+}
+h1{
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+p{
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* Barra */
+.barra-container{
+  width:100%;
+  height:18px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+.barra{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, #a8ff78, #78ffd6);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.porcentaje{
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* Loader */
+.loader{
+  margin: 25px auto 10px;
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(255,255,255,0.3);
+  border-top: 6px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0%{ transform: rotate(0deg); }
+  100%{ transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Preparando inteligencia artificial…</h1>
+    <p>Esto se hace solo la primera vez.<br>Puede tardar varios minutos.</p>
+
+    <div class="barra-container">
+      <div class="barra" id="barra"></div>
+    </div>
+    <div class="porcentaje" id="porcentaje">0%</div>
+
+    <div class="loader"></div>
+  </div>
+
+<script>
+  // Esta función será llamada desde Electron (main.js) para actualizar el progreso
+  function setProgreso(p) {
+    const barra = document.getElementById("barra");
+    const txt = document.getElementById("porcentaje");
+    const val = Math.max(0, Math.min(100, p));
+
+    barra.style.width = val + "%";
+    txt.textContent = val + "%";
+  }
+
+  // Simulación temporal (solo para que no se vea muerta si aún no conectamos el main)
+  let fake = 0;
+  const fakeTimer = setInterval(() => {
+    if (fake < 90) {
+      fake += Math.random() * 3;
+      setProgreso(Math.floor(fake));
+    }
+  }, 800);
+
+  // Exponer función global para que Electron la use
+  window.setProgreso = setProgreso;
+</script>
+</body>
+</html>

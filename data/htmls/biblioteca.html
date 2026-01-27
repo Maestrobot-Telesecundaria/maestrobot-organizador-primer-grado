@@ -1,4 +1,4 @@
-<!DOCTYPE html>   
+<!DOCTYPE html>      
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -17,7 +17,7 @@ body{
 .boton-regreso{
     position:fixed;
     bottom:20px;
-    left:20px; /* 👈 CAMBIO ÚNICO */
+    left:20px;
     padding:10px 18px;
     font-size:16px;
     font-weight:bold;
@@ -44,7 +44,7 @@ body{
     border:1px solid #6f9f6a;
 }
 
-/* Frase de la semana */
+/* Frase */
 #frase-semana{
     width:85%;
     margin:25px auto;
@@ -58,7 +58,7 @@ body{
     box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
-/* Libro de la semana */
+/* Libro semana */
 #libro-semana{
     width:85%;
     margin:40px auto;
@@ -75,10 +75,6 @@ body{
     height:230px;
     object-fit:cover;
     cursor:pointer;
-}
-#libro-semana h2{
-    margin-top:0;
-    color:#355e3b;
 }
 
 /* Fichas */
@@ -97,9 +93,6 @@ body{
     object-fit:cover;
     cursor:pointer;
 }
-.ficha h3{
-    margin-top:0;
-}
 </style>
 </head>
 
@@ -107,7 +100,7 @@ body{
 
 <!-- BOTÓN REGRESAR -->
 <button class="boton-regreso" onclick="window.location.href='menu.html'">
-    ⬅ Regresar
+    ⬅ Regresar al menú
 </button>
 
 <!-- BUSCADOR -->
@@ -121,17 +114,12 @@ body{
 <!-- LIBRO DE LA SEMANA -->
 <div id="libro-semana">
     <a href="../biblioteca/pdf/apologiadesocrates.pdf" target="_blank">
-        <img src="../biblioteca/miniaturas/apologiadesocrates.jpg" alt="Apología de Sócrates">
+        <img src="../biblioteca/miniaturas/apologiadesocrates.jpg">
     </a>
     <div>
         <h2>Libro de la Semana</h2>
         <p><strong>Título:</strong> Apología de Sócrates</p>
         <p><strong>Autor:</strong> Platón</p>
-        <p>
-            Texto fundamental de la filosofía clásica donde Platón
-            presenta la defensa de Sócrates ante el tribunal ateniense,
-            reflexionando sobre la verdad, la ética y la justicia.
-        </p>
     </div>
 </div>
 
@@ -139,62 +127,31 @@ body{
 
 <div class="ficha">
     <a href="../biblioteca/pdf/bodasdesangre.pdf" target="_blank">
-        <img src="../biblioteca/miniaturas/bodasdesangre.jpg" alt="Bodas de Sangre">
+        <img src="../biblioteca/miniaturas/bodasdesangre.jpg">
     </a>
     <div>
         <h3>Bodas de Sangre</h3>
         <p><strong>Autor:</strong> Federico García Lorca</p>
-        <p><strong>Dewey:</strong> 800 Literatura</p>
-        <p>
-            Un drama rural sobre el amor, el honor y la muerte,
-            marcado por un destino trágico.
-        </p>
     </div>
 </div>
 
 <div class="ficha">
     <a href="../biblioteca/pdf/Miocid.pdf" target="_blank">
-        <img src="../biblioteca/miniaturas/miocid.png" alt="Mio Cid">
+        <img src="../biblioteca/miniaturas/miocid.png">
     </a>
     <div>
         <h3>Mio Cid</h3>
         <p><strong>Autor:</strong> Anónimo</p>
-        <p><strong>Dewey:</strong> 800 Literatura</p>
-        <p>
-            Poema épico medieval español que narra las hazañas
-            de Rodrigo Díaz de Vivar, el Cid Campeador.
-        </p>
     </div>
 </div>
 
 <div class="ficha">
     <a href="../biblioteca/pdf/fahrenheit_451.pdf" target="_blank">
-        <img src="../biblioteca/miniaturas/fahrenheit_451.png" alt="Fahrenheit 451">
+        <img src="../biblioteca/miniaturas/fahrenheit_451.png">
     </a>
     <div>
         <h3>Fahrenheit 451</h3>
         <p><strong>Autor:</strong> Ray Bradbury</p>
-        <p><strong>Dewey:</strong> 800 Literatura</p>
-        <p>
-            Distopía que denuncia la censura y la pérdida del
-            pensamiento crítico en la sociedad moderna.
-        </p>
-    </div>
-</div>
-
-<div class="ficha">
-    <a href="../biblioteca/pdf/apologiadesocrates.pdf" target="_blank">
-        <img src="../biblioteca/miniaturas/apologiadesocrates.jpg" alt="Apología de Sócrates">
-    </a>
-    <div>
-        <h3>Apología de Sócrates</h3>
-        <p><strong>Autor:</strong> Platón</p>
-        <p><strong>Dewey:</strong> 100 Filosofía y Pedagogía</p>
-        <p>
-            Defensa filosófica de Sócrates ante sus acusadores,
-            donde se reflexiona sobre la ética, la verdad y el
-            sentido de la vida.
-        </p>
     </div>
 </div>
 
