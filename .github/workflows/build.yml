@@ -22,9 +22,13 @@ jobs:
           node-version: 18
 
       - name: 📦 Instalar dependencias
-        run: npm install
+        run: |
+          cd MaestroBot
+          npm install
 
       - name: 🏗️ Compilar MaestroBot
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npx electron-builder --win --x64 --publish always
+        run: |
+          cd MaestroBot
+          npx electron-builder --win --x64 --publish always
